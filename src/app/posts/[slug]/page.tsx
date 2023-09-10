@@ -1,6 +1,7 @@
 import styles from './singlePage.module.css';
 import Image from 'next/image';
 import Menu from '@/components/menu/Menu';
+import Comments from '@/components/comments/Comments';
 
 const SinglePage = async () => {
   return (
@@ -30,6 +31,9 @@ const SinglePage = async () => {
             odio debitis officia facere quos placeat perspiciatis ex maxime,
             labore explicabo voluptatum?
           </p>
+          <div className={styles.comment}>
+            <Comments />
+          </div>
         </div>
         <Menu />
       </div>
