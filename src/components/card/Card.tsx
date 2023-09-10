@@ -18,10 +18,6 @@ const Card = () => {
           <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
         </Link>
         <p className={styles.desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia officiis, architecto vero eum repellat magnam accusamus. Quaerat soluta dignissimos aspernatur, labore beatae non perferendis, rem officia fugiat minima aut excepturi.</p>
-        {/* <div
-          className={styles.desc}
-          dangerouslySetInnerHTML={{ __html: item?.desc.substring(0, 60) }}
-        /> */}
         <Link href={`/posts/temp`} className={styles.link}>
           Read More
         </Link>
