@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { createContext, useState, useEffect, ReactNode } from 'react';
 
@@ -13,9 +13,10 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 
 const getFromLocalStorage = (): string => {
   if (typeof window !== 'undefined') {
-    const value = localStorage.getItem('theme');
-    return value || 'light';
+    const value = localStorage.getItem('theme') || 'light';
+    return value;
   }
+  return 'light'
 };
 
 type ThemeContextProviderProps = {
