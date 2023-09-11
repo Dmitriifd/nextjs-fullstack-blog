@@ -1,8 +1,14 @@
 import Image from 'next/image';
 import styles from './card.module.css';
 import Link from 'next/link';
+import { Post } from '@/types';
 
-const Card = ({ key, item }: any) => {
+type CardProps = {
+  key: string;
+  item: Post;
+};
+
+const Card = ({ key, item }: CardProps) => {
   return (
     <div className={styles.container} key={key}>
       {item.img && (
