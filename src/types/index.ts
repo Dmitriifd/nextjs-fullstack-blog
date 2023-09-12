@@ -25,3 +25,10 @@ export interface User {
   email: string
   image: string
 }
+
+export type Category = {
+  id: string;
+  slug: string;
+  title: string;
+  img: string;
+};
