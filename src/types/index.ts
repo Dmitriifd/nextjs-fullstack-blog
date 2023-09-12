@@ -9,3 +9,19 @@ export type Post = {
   catSlug: string;
   userEmail: string;
 };
+
+export interface Comments {
+  id: string
+  createdAt: string
+  desc: string
+  userEmail: string
+  postSlug: string
+  user: User
+}
+
+export interface User {
+  id: string
+  name: string
+  email: string
+  image: string
+}
