@@ -1,8 +1,11 @@
-import prisma from "@/utils/connect";
-import { NextResponse } from "next/server";
+import prisma from '@/utils/connect';
+import { NextResponse } from 'next/server';
 
 // GET SINGLE POST
-export const GET = async (req: Request,  params: { slug: string }): Promise<NextResponse> => {
+export const GET = async (
+  req: Request,
+  { params }: { params: { slug: string } }
+): Promise<NextResponse> => {
   const { slug } = params;
 
   try {
@@ -16,7 +19,7 @@ export const GET = async (req: Request,  params: { slug: string }): Promise<Next
   } catch (err) {
     console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }),
+      JSON.stringify({ message: 'Something went wrong!' }),
       { status: 500 }
     );
   }
