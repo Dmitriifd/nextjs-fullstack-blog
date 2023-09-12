@@ -2,82 +2,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styles from './menuPosts.module.css';
+import prisma from '@/utils/connect';
 
-const MenuPosts = ({ withImage }: { withImage?: boolean}) => {
+const MenuPosts = async ({ withImage }: { withImage?: boolean}) => {
+  const popularPosts = await prisma.post.findMany({
+    orderBy: {
+      views: 'desc',
+    },
+    take: 5, // Получить только 5 популярных постов
+    include: {
+      user: true,
+    },
+  });
+
   return (
     <div className={styles.items}>
-      <Link href='/' className={styles.item}>
+      {popularPosts.map((item) => (
+         <Link href={`/posts/${item.slug}`} className={styles.item} key={item.id}>
         {withImage && (
           <div className={styles.imageContainer}>
             <Image src='/p1.jpeg' alt='' fill className={styles.image} />
           </div>
         )}
         <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.travel}`}>Travel</span>
+          <span className={`${styles.category} ${styles.travel}`}>{item.slug}</span>
           <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {item.title}
           </h3>
           <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
+            <span className={styles.username}>{item.user.name}</span>
+            <span className={styles.date}> - {item.createdAt.toISOString().substring(0,10)}</span>
           </div>
         </div>
       </Link>
-      <Link href='/' className={styles.item}>
-        {withImage && (
-          <div className={styles.imageContainer}>
-            <Image src='/p1.jpeg' alt='' fill className={styles.image} />
-          </div>
-        )}
-        <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.culture}`}>
-            Culture
-          </span>
-          <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
-        </div>
-      </Link>
-      <Link href='/' className={styles.item}>
-        {withImage && (
-          <div className={styles.imageContainer}>
-            <Image src='/p1.jpeg' alt='' fill className={styles.image} />
-          </div>
-        )}
-        <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.food}`}>Food</span>
-          <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
-        </div>
-      </Link>
-      <Link href='/' className={styles.item}>
-        {withImage && (
-          <div className={styles.imageContainer}>
-            <Image src='/p1.jpeg' alt='' fill className={styles.image} />
-          </div>
-        )}
-        <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.fashion}`}>
-            Fashion
-          </span>
-          <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
-        </div>
-      </Link>
+      ))}
     </div>
   );
 };
