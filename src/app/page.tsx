@@ -5,7 +5,7 @@ import CardList from '@/components/cardList/CardList';
 import Menu from '@/components/menu/Menu';
 
 export default function Home({ searchParams }: { searchParams: { page: string } }) {
-  const page = searchParams.page || "1";
+  const { page = '1' } = searchParams;
 
   return (
     <div className={styles.container}>
