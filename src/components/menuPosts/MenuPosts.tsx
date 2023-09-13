@@ -3,9 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import styles from './menuPosts.module.css';
 import { PopularPost } from '@/types';
+import { BASE_URL } from '@/utils/const';
 
 const getData = async () => {
-  const res = await fetch(`http://127.0.0.1:3000/api/popular`, {
+  const res = await fetch(`${BASE_URL}/api/popular`, {
     cache: 'no-store',
   });
 

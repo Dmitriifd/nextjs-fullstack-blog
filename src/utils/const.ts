@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://nextjs-fullstack-blog-roan.vercel.app/';
