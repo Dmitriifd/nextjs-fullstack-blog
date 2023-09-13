@@ -32,3 +32,7 @@ export type Category = {
   title: string;
   img: string;
 };
+
+export type PopularPost = Post & {
+  user: User;
+}
