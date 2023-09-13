@@ -5,7 +5,7 @@ import styles from './menuPosts.module.css';
 import { PopularPost } from '@/types';
 
 const getData = async () => {
-  const res = await fetch(`http://localhost:3000/api/popular`, {
+  const res = await fetch(`http://127.0.0.1:3000/api/popular`, {
     cache: 'no-store',
   });
 

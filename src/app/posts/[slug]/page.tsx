@@ -4,7 +4,7 @@ import Menu from '@/components/menu/Menu';
 import Comments from '@/components/comments/Comments';
 
 const getData = async (slug: string) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`http://127.0.0.1:3000/api/posts/${slug}`, {
     cache: 'no-store',
   });
 

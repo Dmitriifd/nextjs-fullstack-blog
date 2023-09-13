@@ -6,7 +6,7 @@ import { Post } from '@/types';
 
 const getData = async (page: string, cat: string) => {
   const res = await fetch(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ''}`,
+    `http://127.0.0.1:3000/api/posts?page=${page}&cat=${cat || ''}`,
     {
       cache: 'no-store',
     }
